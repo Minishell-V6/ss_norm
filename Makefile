@@ -6,7 +6,7 @@
 #    By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 19:30:48 by djeon             #+#    #+#              #
-#    Updated: 2021/07/05 13:02:24 by sejpark          ###   ########.fr        #
+#    Updated: 2021/07/06 02:02:03 by seuyu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ RM				= rm -rf
 CFLAGS 			= -Wall -Wextra -Werror
 NAME 			= minishell
 
-#READLINE_LIB 	= -lreadline -L/usr/local/opt/readline/lib
-#READLINE_INC	= -I/usr/local/opt/readline/include
+READLINE_LIB 	= -lreadline -L/usr/local/opt/readline/lib
+READLINE_INC	= -I/usr/local/opt/readline/include
 
-READLINE_LIB 	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib
-READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
+# READLINE_LIB 	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib
+# READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
 
-READLINE_LIB	= -lreadline -L/opt/homebrew/opt/readline/lib
-READLINE_INC	= -I/opt/homebrew/opt/readline/include
+# READLINE_LIB	= -lreadline -L/opt/homebrew/opt/readline/lib
+# READLINE_INC	= -I/opt/homebrew/opt/readline/include
 
 LIBFT		= libft.a
 LIBFT_DIR	= libft
