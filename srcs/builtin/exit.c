@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/builtin.h"
 
 int				check_digit(t_cmd *cmd_list)
 {
@@ -39,12 +39,28 @@ int				check_digit(t_cmd *cmd_list)
 	return (1);
 }
 
-int				ft_exit(t_cmd *cmd_list)
+void			exit_err_chk(t_cmd *cmd_list)
 {
 	long long	result;
 	int			err_flag;
 
 	err_flag = 0;
+	if (cmd_list->exit_flag == 1)
+	{
+		result = ft_atoi(cmd_list->cmdline[1].cmd, &err_flag);
+		if (err_flag == 1)
+		{
+			cmd_list->err_manage.errcode = 4;
+			cmd_list->err_manage.errindex = 1;
+			print_errstr(cmd_list);
+			exit(-1);
+		}
+		exit(result % 256);
+	}
+}
+
+int				ft_exit(t_cmd *cmd_list)
+{
 	if (cmd_list->exit_flag == 1)
 		printf("exit\n");
 	if (cmd_list->cmdline[1].cmd != NULL)
@@ -59,17 +75,6 @@ int				ft_exit(t_cmd *cmd_list)
 	}
 	else if (cmd_list->exit_flag == 1)
 		exit(0);
-	if (cmd_list->exit_flag == 1)
-	{
-		result = ft_atoi(cmd_list->cmdline[1].cmd, &err_flag);
-		if (err_flag == 1)
-		{
-			cmd_list->err_manage.errcode = 4;
-			cmd_list->err_manage.errindex = 1;
-			print_errstr(cmd_list);
-			exit(-1);
-		}
-		exit(result % 256);
-	}
+	exit_err_chk(cmd_list);
 	return (1);
 }

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.h                                            :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: djeon <djeon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/30 16:27:53 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/02 15:54:59 by sejpark          ###   ########.fr       */
+/*   Created: 2021/06/16 16:38:03 by djeon             #+#    #+#             */
+/*   Updated: 2021/07/03 16:03:53 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNSET_H
-# define UNSET_H
-# include "structs.h"
-# include "../libft/libft.h"
+#include "../../includes/builtin.h"
 
-int	ft_valid_key(char *key);
-int ft_unset(t_cmd *cmd_list, char **envp);
+int				ft_pwd(int fd)
+{
+	char		*str;
 
-#endif
+	str = getcwd(NULL, 0);
+	ft_putstr_fd(str, fd);
+	write(fd, "\n", 1);
+	free(str);
+	return (1);
+}
