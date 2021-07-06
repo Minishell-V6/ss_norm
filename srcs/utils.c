@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:01:44 by djeon             #+#    #+#             */
-/*   Updated: 2021/07/05 13:00:46 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 14:06:31 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_cmd			*ft_new(char *line, int pipe_flag, char **envp, int exit_flag)
 
 	if (!(result = (t_cmd*)malloc(sizeof(t_cmd))))
 		return (NULL);
-	result->cmdline = cmd_split(line, ' ');
+	result->cmdline = cmd_split(line);
 	ft_alloc_token(result->cmdline, envp);
 	result->pipe_flag = pipe_flag;
 	if (exit_flag == 0 && pipe_flag == 0)
