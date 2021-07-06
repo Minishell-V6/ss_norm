@@ -6,7 +6,7 @@
 #    By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 19:30:48 by djeon             #+#    #+#              #
-#    Updated: 2021/07/06 02:02:03 by seuyu            ###   ########.fr        #
+#    Updated: 2021/07/06 19:31:07 by sejpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC 	= srcs/parser/cmd_split.c srcs/parser/cmd_split_utils.c \
 		  srcs/parser/alloc_token.c srcs/parser/alloc_token_utils.c \
 		  srcs/parser/get_parse_size.c srcs/parser/get_parse_size_utils.c \
 		  srcs/parser/parser.c \
-		  srcs/minishell.c srcs/utils.c srcs/exec.c \
+		  srcs/execute/exec.c \
+		  srcs/minishell.c srcs/utils.c \
 	  	  srcs/error_management.c srcs/ft_cd.c srcs/ft_exit.c \
 		  srcs/ft_env.c srcs/ft_pwd.c srcs/ft_export.c srcs/export_utils.c \
 		  srcs/signal_handle.c \
@@ -55,6 +56,7 @@ $(LIBFT) :
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 			mkdir -p $(OBJ_DIR)
 			mkdir -p $(OBJ_DIR)/parser 
+			mkdir -p $(OBJ_DIR)/execute 
 			$(CC) $(CFLAGS) -c $< -o $(<:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) \
 			$(READLINE_INC)
 
