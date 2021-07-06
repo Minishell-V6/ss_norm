@@ -12,9 +12,9 @@
 
 #include "../includes/minishell.h"
 
-int			check_whitespace(char *line)
+int				check_whitespace(char *line)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -26,13 +26,13 @@ int			check_whitespace(char *line)
 	return (1);
 }
 
-char		*strjoin_path(char const *s1, char const *s2)
+char			*strjoin_path(char const *s1, char const *s2)
 {
-	char	*tmp1;
-	char	*tmp2;
-	char	*result;
-	int		i;
-	int		j;
+	char		*tmp1;
+	char		*tmp2;
+	char		*result;
+	int			i;
+	int			j;
 
 	tmp1 = (char*)s1;
 	tmp2 = (char*)s2;

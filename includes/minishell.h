@@ -22,11 +22,13 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include "../libft/libft.h"
 # include "structs.h"
 # include "alloc_token.h"
 # include "unset.h"
 # include "parser.h"
+
 
 # define STDIN 			0
 # define STDOUT 		1
@@ -59,7 +61,6 @@ void		add_key_envp(char ***envp, char *cmd, int keyindex);
 void		set_signal(void);
 
 //redirect
-int			redirect(t_cmd *cmd_list, int **fds, int *last_index);
-int			redirect_check(t_cmd *cmd_list, int **fds);
-int			check_fd_error(t_cmd *cmd_list, int errorcode, int error_index, int fd);
+int					redirect(t_cmd *cmd_list, int **fds, int *last_index);
+int					redirect_check(t_cmd *cmd_list, int **fds);
 #endif

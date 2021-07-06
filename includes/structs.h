@@ -32,7 +32,7 @@ typedef struct	s_cmd
 	int				pipe_flag;
 	int				exit_flag;
 	char			quote;
-	char			*(redirect_filename[4]);
+	char			*(rd_buf[4]);
 	//index 0 : left redirect char (<, <<);
 	//index 1 : left redirect filename;
 	//index 2 : righ redirect char (>, >>);
