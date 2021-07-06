@@ -6,7 +6,7 @@
 #    By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 19:30:48 by djeon             #+#    #+#              #
-#    Updated: 2021/07/06 19:31:07 by sejpark          ###   ########.fr        #
+#    Updated: 2021/07/06 21:14:08 by sejpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,14 @@ SRC 	= srcs/parser/cmd_split.c srcs/parser/cmd_split_utils.c \
 		  srcs/parser/alloc_token.c srcs/parser/alloc_token_utils.c \
 		  srcs/parser/get_parse_size.c srcs/parser/get_parse_size_utils.c \
 		  srcs/parser/parser.c \
-		  srcs/execute/exec.c \
+		  srcs/execute/exec.c srcs/execute/exec_func.c srcs/execute/non_builtin.c \
 		  srcs/minishell.c srcs/utils.c \
 		  srcs/builtin/echo.c srcs/builtin/unset.c srcs/builtin/env.c \
 		  srcs/builtin/pwd.c srcs/builtin/export.c srcs/builtin/cd.c \
 		  srcs/builtin/export_utils.c srcs/builtin/exit.c \
 		  srcs/redirect/redirect.c srcs/redirect/redirect_check.c \
 		  srcs/redirect/redir_chk.c \
-	  	srcs/err_print.c \
+	  	  srcs/err_print.c \
 		  srcs/signal_handle.c \
 		  srcs/getenv.c \
 
@@ -54,12 +54,12 @@ $(NAME) : 	$(LIBFT) $(OBJ)
 $(LIBFT) :
 			cd $(LIBFT_DIR); make
 			cp $(LIBFT_DIR)/$(LIBFT) ./
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 			mkdir -p $(OBJ_DIR)/builtin
 			mkdir -p $(OBJ_DIR)/parser 
 			mkdir -p $(OBJ_DIR)/execute 
 			mkdir -p $(OBJ_DIR)/redirect
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 			$(CC) $(CFLAGS) -c $< -o $(<:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) \
 			$(READLINE_INC)
 
