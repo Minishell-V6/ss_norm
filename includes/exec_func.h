@@ -6,7 +6,7 @@
 /*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:55:36 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 20:57:29 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:21:44 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include "builtin.h"
 # include "non_builtin.h"
 
+typedef struct	s_fd
+{
+	int			*fds;
+	int			fd;
+}				t_fd;
 int	exec_function(t_cmd *cmd_list, char *argv[], char **envp[], int fds[]);
 
 #endif
