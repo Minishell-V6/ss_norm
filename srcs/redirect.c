@@ -16,9 +16,13 @@ int				left_redirect(t_cmd *cmd_list, int *last_index)
 {
 	int			fd;
 
-	fd = open(cmd_list->redirect_filename[1], O_RDONLY, 0644);
-	if(check_fd_error(cmd_list, 3, last_index[0], fd) == -1)
+	fd = open(cmd_list->cmdline[last_index[0]].cmd, O_RDONLY, 0644);
+	if (fd <= 0)
+	{
+		cmd_list->err_manage.errcode = 3;
+		cmd_list->err_manage.errindex = last_index[0];
 		return (-1);
+	}
 	dup2(fd, STDIN);
 	close(fd);
 	return (0);
@@ -29,9 +33,7 @@ int				left_redirect_double(t_cmd *cmd_list, int **fds)
 	char		*line;
 
 	while (ft_strncmp((line = readline("> ")), cmd_list->redirect_filename[1], 5))
-	{
 		ft_putendl_fd(line, (*fds)[1]);
-	}
 	close((*fds)[1]);
 	dup2((*fds)[0], 0);
 	close((*fds)[0]);
@@ -43,21 +45,30 @@ int				right_redirect(t_cmd *cmd_list, int *last_index)
 {
 	int			fd;
 
-	fd = open(cmd_list->redirect_filename[3], O_WRONLY | O_CREAT | O_TRUNC, 0744);
-	if(check_fd_error(cmd_list, 3, last_index[1], fd) == -1)
+	fd = open(cmd_list->cmdline[last_index[1]].cmd, O_WRONLY | O_CREAT | O_TRUNC, 0744);
+	if (fd <= 0)
+	{
+		cmd_list->err_manage.errcode = 3;
+		cmd_list->err_manage.errindex = last_index[1];
 		return (-1);
+	}
 	dup2(fd, STDOUT);
 	close(fd);
 	return (1);
 }
 
+
 int				right_redirect_double(t_cmd *cmd_list, int *last_index)
 {
 	int			fd;
 
-	fd = open(cmd_list->redirect_filename[3], O_WRONLY | O_CREAT | O_APPEND, 0744);
-	if(check_fd_error(cmd_list, 3, last_index[1], fd) == -1)
+	fd = open(cmd_list->cmdline[last_index[1]].cmd, O_WRONLY | O_CREAT | O_APPEND, 0744);
+	if (fd <= 0)
+	{
+		cmd_list->err_manage.errcode = 3;
+		cmd_list->err_manage.errindex = last_index[1];
 		return (-1);
+	}
 	dup2(fd, STDOUT);
 	close(fd);
 	return (1);

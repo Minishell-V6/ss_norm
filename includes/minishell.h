@@ -65,5 +65,4 @@ void				set_signal(void);
 //redirect
 int					redirect(t_cmd *cmd_list, int **fds, int *last_index);
 int					redirect_check(t_cmd *cmd_list, int **fds);
-int					check_fd_error(t_cmd *cmd_list, int errorcode, int error_index, int fd);
 #endif
