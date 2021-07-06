@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:33:09 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 14:08:17 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:34:56 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ t_token		*cmd_split(char const *s)
 		else
 		{
 			result[i].cmd = ft_alloc_word(&cursor, s);
-			result[i].redir_flag = 0;
+			result[i].rd_flg = 0;
 			if (result[i++].cmd == NULL)
 				return (ft_free(result, i));
 		}

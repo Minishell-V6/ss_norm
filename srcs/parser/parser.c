@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 14:57:25 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 17:50:13 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:36:41 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_cmd	*ft_new(char *line, int pipe_flag, char **envp, int exit_flag)
 		result->exit_flag = 1;
 	else
 		result->exit_flag = 0;
-	result->err_manage.errcode = 0;
-	result->err_manage.errindex = 0;
-	result->err_manage.errtoken = NULL;
+	result->err.code = 0;
+	result->err.idx = 0;
+	result->err.token = NULL;
 	result->next = NULL;
 	return (result);
 }

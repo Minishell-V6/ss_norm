@@ -14,8 +14,6 @@
 # define EXEC_H
 # include "exec_func.h"
 
-//int				non_builtin_exec(t_cmd *cmd_list, char *argv[], char **envp, char *path, int fds[]);
-//int				non_builtin(t_cmd *cmd_list, char *argv[], char **envp, int fds[]);
 int				exec(t_cmd *cmd_list, char *argv[], char **envp[]);
 
 #endif

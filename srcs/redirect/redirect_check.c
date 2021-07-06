@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 16:36:51 by hoylee            #+#    #+#             */
-/*   Updated: 2021/07/06 02:06:04 by seuyu            ###   ########.fr       */
+/*   Created: 2021/06/29 16:36:51 by seuyu             #+#    #+#             */
+/*   Updated: 2021/07/06 22:32:00 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int		fd_err_chk(t_cmd *cmd_list, int i, int redir)
 	if (redir == 1)
 		fd = open(cmd_list->cmdline[i + 1].cmd, O_WRONLY | O_APPEND, 0744);
 	else if (redir == 3)
-		fd = open(cmd_list->cmdline[i + 1].cmd, O_WRONLY | O_CREAT | O_TRUNC, 0744);
+		fd = open(cmd_list->cmdline[i + 1].cmd, O_WRONLY | O_CREAT \
+		| O_TRUNC, 0744);
 	else if (redir == 4)
-		fd = open(cmd_list->cmdline[i + 1].cmd, O_WRONLY | O_CREAT | O_APPEND, 0744);
+		fd = open(cmd_list->cmdline[i + 1].cmd, O_WRONLY | O_CREAT \
+		| O_APPEND, 0744);
 	if (fd <= 0)
 	{
 		cmd_list->err_manage.errcode = 3;

@@ -15,15 +15,15 @@
 
 typedef struct	s_err
 {
-	int				errcode;
-	int				errindex;
-	char			*errtoken;
+	int				code;
+	int				idx;
+	char			*token;
 }				t_err;
 
 typedef struct	s_token
 {
 	char		*cmd;
-	char		redir_flag;
+	char		rd_flg;
 }				t_token;
 
 typedef struct	s_cmd
@@ -33,11 +33,7 @@ typedef struct	s_cmd
 	int				exit_flag;
 	char			quote;
 	char			*(rd_buf[4]);
-	//index 0 : left redirect char (<, <<);
-	//index 1 : left redirect filename;
-	//index 2 : righ redirect char (>, >>);
-	//index 3 : righ redirect filename;
-	struct s_err	err_manage;
+	struct s_err	err;
 	struct s_cmd	*next;
 }				t_cmd;
 
