@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/redir_chk.h"
-#include <stdio.h> 
+#include "../../includes/redir_chk.h"
 
 int redir_chk(char *str)
 {

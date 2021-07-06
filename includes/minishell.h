@@ -26,7 +26,7 @@
 # include "../libft/libft.h"
 # include "structs.h"
 # include "alloc_token.h"
-# include "unset.h"
+# include "builtin.h"
 # include "parser.h"
 
 
@@ -39,24 +39,9 @@ int			exec_function(t_cmd *cmd_list, char *argv[], char **envp[], int fds[]);
 char		*strjoin_path(char const *s1, char const *s2);
 int			check_whitespace(char *line);
 int			exec(t_cmd *cmp_list, char *argv[], char **envp[]);
-int			ft_cd(t_cmd *cmd_list);
-int			ft_exit(t_cmd *cmd_list);
-int			ft_pwd(int fd);
-void		print_errstr(t_cmd *cmd_list);
-int	        ft_echo(t_cmd *cmd_list, int fd);
 void		free_list(t_cmd *cmd_list);
 
-// env
-int			ft_env(char **envp, int fd);
-char		**copy_envp(char **envs);
-//export
-int			ft_export(t_cmd *cmd_list, char ***envp, int fd);
-int			add_envp(char *cmd, char ***envp);
-int			isvalid_export(char *line);
-int			cnt_envp_row(char **envp);
-char		**sort_env(char **envp);
-int			haveequal(char *line);
-void		add_key_envp(char ***envp, char *cmd, int keyindex);
+
 //signal
 void		set_signal(void);
 
