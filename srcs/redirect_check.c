@@ -12,6 +12,11 @@
 
 #include "../includes/minishell.h"
 
+void	redir_buf(t_cmd *cmd_list, int i, int n)
+{
+	cmd_list->rd_buf[n] = cmd_list->cmdline[i].cmd;
+	cmd_list->rd_buf[n + 1] = cmd_list->cmdline[i + 1].cmd;
+}
 
 int		is_redir(char *cmd)
 {
@@ -26,7 +31,7 @@ int		is_redir(char *cmd)
 	return (0);
 }
 
-int				fd_err_chk(t_cmd *cmd_list, int i, int redir)
+int		fd_err_chk(t_cmd *cmd_list, int i, int redir)
 {
 	int fd;
 
@@ -47,7 +52,7 @@ int				fd_err_chk(t_cmd *cmd_list, int i, int redir)
 	return (1);
 }
 
-int				rd_err_chk(t_cmd *cmd_list, int i, int redir, int *last_index)
+int		rd_err_chk(t_cmd *cmd_list, int i, int redir, int *last_index)
 {
 	if (cmd_list->cmdline[i + 1].cmd == 0)
 	{
@@ -61,13 +66,19 @@ int				rd_err_chk(t_cmd *cmd_list, int i, int redir, int *last_index)
 		return (-1);
 	}
 	if (redir <= 2)
+	{
 		last_index[0] = i + 1;
+		redir_buf(cmd_list, i, 0);
+	}
 	else
+	{
 		last_index[1] = i + 1;
+		redir_buf(cmd_list, i, 2);
+	}
 	return (0);
 }
 
-int				redirect_check(t_cmd *cmd_list, int **fds)
+int		redirect_check(t_cmd *cmd_list, int **fds)
 {
 	int			i;
 	int			last_index[2];
@@ -75,7 +86,7 @@ int				redirect_check(t_cmd *cmd_list, int **fds)
 
 	i = -1;
 	while (++i < 4)
-		cmd_list->redirect_filename[i] = 0;
+		cmd_list->rd_buf[i] = 0;
 	i = 0;
 	while (cmd_list->cmdline[i].cmd)
 	{
@@ -89,8 +100,7 @@ int				redirect_check(t_cmd *cmd_list, int **fds)
 		}
 		i++;
 	}
-	if ((cmd_list->redirect_filename[0] || cmd_list->redirect_filename[2]) ? 1 : 0)
+	if ((cmd_list->rd_buf[0] || cmd_list->rd_buf[2]))
 		return (redirect(cmd_list, fds, last_index));
-	else
-		return (0);
+	return (0);
 }

@@ -22,10 +22,12 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include "../libft/libft.h"
 # include "structs.h"
 # include "alloc_token.h"
 # include "unset.h"
+
 
 # define STDIN 			0
 # define STDOUT 		1

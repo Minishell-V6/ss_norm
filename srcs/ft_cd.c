@@ -12,12 +12,8 @@
 
 #include "../includes/minishell.h"
 
-int		ft_cd(t_cmd *cmd_list)
-{ 
-	int i;
-	char *pst_buffer;	
-
-	i = 0;
+int			set_cd(t_cmd *cmd_list)
+{
 	if (cmd_list->cmdline[1].cmd == 0 || cmd_list->cmdline[1].redir_flag == 1)
 	{
 		chdir(getenv("HOME"));
@@ -25,20 +21,33 @@ int		ft_cd(t_cmd *cmd_list)
 	}
 	if (cmd_list->cmdline[1].cmd[0] == 0)
 		return (1);
-	pst_buffer = getcwd(0, 0);
 	if (cmd_list->cmdline[1].cmd[0] == '~')
 	{
-		if(cmd_list->cmdline[1].cmd[1] == '/')
+		if (cmd_list->cmdline[1].cmd[1] == '/')
 		{
-			cmd_list->cmdline[1].cmd = ft_substr(cmd_list->cmdline[1].cmd, 1, ft_strlen(cmd_list->cmdline[1].cmd + 1));
-			cmd_list -> cmdline[1].cmd = ft_strjoin(getenv("HOME"), cmd_list->cmdline[1].cmd);
+			cmd_list->cmdline[1].cmd = ft_substr(cmd_list->cmdline[1].cmd, 1, \
+			ft_strlen(cmd_list->cmdline[1].cmd + 1));
+			cmd_list->cmdline[1].cmd = ft_strjoin(getenv("HOME"), \
+			cmd_list->cmdline[1].cmd);
 		}
-		else if(cmd_list->cmdline[1].cmd[1] == 0)
+		else if (cmd_list->cmdline[1].cmd[1] == 0)
 		{
 			chdir(getenv("HOME"));
 			return (1);
 		}
 	}
+	return (1);
+}
+
+int			ft_cd(t_cmd *cmd_list)
+{
+	int		i;
+	char	*pst_buffer;
+
+	i = 0;
+	pst_buffer = getcwd(0, 0);
+	if (set_cd(cmd_list) == 1)
+		return (1);
 	if (chdir(cmd_list->cmdline[1].cmd) == -1)
 	{
 		chdir(pst_buffer);
