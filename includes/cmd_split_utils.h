@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_split.h                                        :+:      :+:    :+:   */
+/*   cmd_split_utils.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/24 19:19:26 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 14:05:41 by sejpark          ###   ########.fr       */
+/*   Created: 2021/07/06 13:29:44 by sejpark           #+#    #+#             */
+/*   Updated: 2021/07/06 13:32:14 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_SPLIT_H
-# define CMD_SPLIT_H
-# include <stdlib.h>
-# include "structs.h"
-# include "cmd_split_utils.h"
+#ifndef CMD_SPLIT_UTILS_H
+# define CMD_SPLIT_UTILS_H
 
-t_token			*cmd_split(char const *s);
-
+void	ft_quote_chk(char const *s, int *quote);
+void	ft_begin_chk(char const *s, int *begin, int *redir);
+void	ft_inc_cnt(int *redir, int *cnt);
+int		ft_cal_wordend(char const *s, int *begin, int *quote, int *redir);
+int		ft_cal_wordlen(char const *s, int *len, int *begin, int *quote);
 #endif
