@@ -6,7 +6,7 @@
 /*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:54:21 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 20:14:34 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 21:00:58 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		exec_function(t_cmd *cmd_list, char *argv[], char **envp[], int fds[])
 		fd = fds[1];
 	else
 		fd = 1;
-	return (call_function(cmd_list, envp, argv, fds));
+	return (call_function(cmd_list, fd, envp, argv, fds));
 //	if (ft_strncmp("pwd", cmd_list->cmdline[0].cmd, 4) == 0)
 //		return (ft_pwd(fd));
 //	else if (ft_strncmp("cd", cmd_list->cmdline[0].cmd, 3) == 0)
