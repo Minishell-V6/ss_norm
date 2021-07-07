@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 18:06:01 by djeon             #+#    #+#             */
-/*   Updated: 2021/07/06 20:58:58 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 01:12:15 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ int				exec(t_cmd *cmd_list, char *argv[], char **envp[])
 	{
 		if ((pid = fork()) < 0)
 		{
-			cmd_list->err_manage.errcode = 1;
+			cmd_list->err.code = 1;
 			print_errstr(cmd_list);
 			return (g_exit_status);
 		}

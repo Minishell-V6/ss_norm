@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_token_utils.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:21:03 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 15:57:43 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:35:15 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ALLOC_TOKEN_UTILS_H
 # include "cmd_split.h"
 # include "get_parse_size.h"
-# include "ft_getenv.h"
+# include "getenv.h"
 # include "redir_chk.h"
 
 extern int	g_exit_status;

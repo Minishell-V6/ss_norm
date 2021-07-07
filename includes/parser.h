@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 16:33:35 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 17:47:23 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:06:03 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ typedef struct	s_parser
 	t_cmd		*new;
 	int			quote_flag;
 }				t_parser;
-void	parser(t_cmd **cmd_list, char *line, char **envp);
+void			parser(t_cmd **cmd_list, char *line, char **envp);
 
 #endif

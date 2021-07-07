@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 21:42:57 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 15:56:41 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:35:56 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ t_token	*ft_alloc_token(t_token *token, char **envp)
 		if (token[i].cmd[0] == '<' || token[i].cmd[0] == '>')
 		{
 			if (redir_chk(token[i].cmd))
-				token[i].redir_flag = 1;
+				token[i].rd_flg = 1;
 			else
-				token[i].redir_flag = -1;
+				token[i].rd_flg = -1;
 		}
 		token[i].cmd = (char*)malloc(sizeof(char) * (cmd_len + 1));
 		ft_copy_str(tmp_cmd, token[i].cmd, envp);

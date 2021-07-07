@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   non_builtin.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:17:37 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 20:34:00 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/06 22:36:58 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include "structs.h"
-# include "ft_getenv.h"
+# include "getenv.h"
 # include "utils.h"
 
 extern int g_exit_status;

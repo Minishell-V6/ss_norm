@@ -30,23 +30,14 @@
 # include "parser.h"
 # include "exec.h"
 
-
 # define STDIN 			0
 # define STDOUT 		1
 # define STDERR 		2
 
 extern int	g_exit_status;
 void		print_errstr(t_cmd *cmd_list);
-//int			exec_function(t_cmd *cmd_list, char *argv[], char **envp[], int fds[]);
-//char		*strjoin_path(char const *s1, char const *s2);
-//int			check_whitespace(char *line);
-//int			exec(t_cmd *cmp_list, char *argv[], char **envp[]);
-//void		free_list(t_cmd *cmd_list);
-
-//signal
 void		set_signal(void);
+int			redirect(t_cmd *cmd_list, int **fds, int *last_index);
+int			redirect_check(t_cmd *cmd_list, int **fds);
 
-//redirect
-int					redirect(t_cmd *cmd_list, int **fds, int *last_index);
-int					redirect_check(t_cmd *cmd_list, int **fds);
 #endif

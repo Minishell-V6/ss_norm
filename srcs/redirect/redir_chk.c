@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_chk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:00:44 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/05 12:53:25 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 01:19:41 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char *alloc_unexpected_token(char *redir)
 	result = NULL;
 	if (ft_strncmp(redir, "<<", 2) == 0)
 	{
-		if (ft_strncmp(redir + 2, "<<", 2) == 0 
+		if (ft_strncmp(redir + 2, "<<", 2) == 0
 				|| ft_strncmp(redir + 2, ">>", 2) == 0)
 			result = ft_substr(redir, 2, 2);
 		else if (ft_strncmp(redir + 2, "<", 1) == 0
@@ -40,7 +40,7 @@ char *alloc_unexpected_token(char *redir)
 	}
 	else if (ft_strncmp(redir, ">>", 2) == 0)
 	{
-		if (ft_strncmp(redir + 2, "<<", 2) == 0 
+		if (ft_strncmp(redir + 2, "<<", 2) == 0
 				|| ft_strncmp(redir + 2, ">>", 2) == 0)
 			result = ft_substr(redir, 2, 2);
 		else if (ft_strncmp(redir + 2, "<", 1) == 0
@@ -49,7 +49,7 @@ char *alloc_unexpected_token(char *redir)
 	}
 	else if (ft_strncmp(redir, "<", 1) == 0)
 	{
-		if (ft_strncmp(redir + 1, "<<", 2) == 0 
+		if (ft_strncmp(redir + 1, "<<", 2) == 0
 				|| ft_strncmp(redir + 1, ">>", 2) == 0)
 			result = ft_substr(redir, 1, 2);
 		else if (ft_strncmp(redir + 1, "<", 1) == 0
@@ -58,7 +58,7 @@ char *alloc_unexpected_token(char *redir)
 	}
 	else if (ft_strncmp(redir, ">", 1) == 0)
 	{
-		if (ft_strncmp(redir + 1, "<<", 2) == 0 
+		if (ft_strncmp(redir + 1, "<<", 2) == 0
 				|| ft_strncmp(redir + 1, ">>", 2) == 0)
 			result = ft_substr(redir, 1, 2);
 		else if (ft_strncmp(redir + 1, "<", 1) == 0
@@ -75,10 +75,10 @@ int redir_err_chk(t_cmd *cmd_list)
 	i = 0;
 	while (cmd_list->cmdline[i].cmd)
 	{
-		if (cmd_list->cmdline[i].redir_flag == -1)
+		if (cmd_list->cmdline[i].rd_flg == -1)
 		{
-			cmd_list->err_manage.errtoken = alloc_unexpected_token(cmd_list->cmdline[i].cmd);
-			cmd_list->err_manage.errcode = 7;
+			cmd_list->err.token = alloc_unexpected_token(cmd_list->cmdline[i].cmd);
+			cmd_list->err.code = 7;
 			return (-1);
 		}
 		i++;
