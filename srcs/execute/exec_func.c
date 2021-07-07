@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   exec_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:54:21 by sejpark           #+#    #+#             */
 /*   Updated: 2021/07/06 22:30:25 by sejpark          ###   ########.fr       */
@@ -31,7 +31,7 @@ int		call_function(t_cmd *cmd_list, char **envp[], char *argv[],
 		return (ft_unset(cmd_list, *envp));
 	else if (non_builtin(cmd_list, argv, *envp, t_fd_data->fds) == 0)
 	{
-		cmd_list->err_manage.errcode = 1;
+		cmd_list->err.code = 1;
 		return (-1);
 	}
 	return (0);

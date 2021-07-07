@@ -16,11 +16,11 @@ RM				= rm -rf
 CFLAGS 			= -Wall -Wextra -Werror
 NAME 			= minishell
 
-# READLINE_LIB 	= -lreadline -L/usr/local/opt/readline/lib
-# READLINE_INC	= -I/usr/local/opt/readline/include
+READLINE_LIB 	= -lreadline -L/usr/local/opt/readline/lib
+READLINE_INC	= -I/usr/local/opt/readline/include
 
-READLINE_LIB 	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib
-READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
+# READLINE_LIB 	= -lreadline -L /Users/$(USER)/.brew/opt/readline/lib
+# READLINE_INC	= -I /Users/$(USER)/.brew/opt/readline/include
 
 LIBFT		= libft.a
 LIBFT_DIR	= libft
@@ -55,8 +55,8 @@ $(LIBFT) :
 			cd $(LIBFT_DIR); make
 			cp $(LIBFT_DIR)/$(LIBFT) ./
 			mkdir -p $(OBJ_DIR)/builtin
-			mkdir -p $(OBJ_DIR)/parser 
-			mkdir -p $(OBJ_DIR)/execute 
+			mkdir -p $(OBJ_DIR)/parser
+			mkdir -p $(OBJ_DIR)/execute
 			mkdir -p $(OBJ_DIR)/redirect
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

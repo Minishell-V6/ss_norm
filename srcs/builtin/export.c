@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiylee <jiylee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/17 14:13:20 by seojeong          #+#    #+#             */
-/*   Updated: 2021/07/02 17:35:37 by mac              ###   ########.fr       */
+/*   Created: 2021/06/17 14:13:20 by seuyu             #+#    #+#             */
+/*   Updated: 2021/07/07 01:16:17 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int				ft_export(t_cmd *cmd_list, char ***envp, int fd)
 	int			keyindex;
 
 	i = 1;
-	while (cmd_list->cmdline[i].cmd && cmd_list->cmdline[i].redir_flag == 0)
+	while (cmd_list->cmdline[i].cmd && cmd_list->cmdline[i].rd_flg == 0)
 	{
 		if (isvalid_export(cmd_list->cmdline[i].cmd))
 		{
@@ -122,12 +122,12 @@ int				ft_export(t_cmd *cmd_list, char ***envp, int fd)
 				add_envp(cmd_list->cmdline[i].cmd, envp);
 		}
 		else
-			cmd_list->err_manage.errcode = 5;
+			cmd_list->err.code = 5;
 		i++;
 	}
-	if (!(cmd_list->cmdline[1].cmd) || cmd_list->cmdline[1].redir_flag == 1)
+	if (!(cmd_list->cmdline[1].cmd) || cmd_list->cmdline[1].rd_flg == 1)
 		print_export(*envp, fd);
-	if (cmd_list->err_manage.errcode == 5)
+	if (cmd_list->err.code == 5)
 		return (-1);
 	return (1);
 }

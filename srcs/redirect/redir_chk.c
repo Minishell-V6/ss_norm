@@ -67,11 +67,10 @@ int		redir_err_chk(t_cmd *cmd_list)
 	i = 0;
 	while (cmd_list->cmdline[i].cmd)
 	{
-		if (cmd_list->cmdline[i].redir_flag == -1)
+		if (cmd_list->cmdline[i].rd_flg == -1)
 		{
-			cmd_list->err_manage.errtoken =
-				alloc_unexpected_token(cmd_list->cmdline[i].cmd);
-			cmd_list->err_manage.errcode = 7;
+			cmd_list->err.token = alloc_unexpected_token(cmd_list->cmdline[i].cmd);
+			cmd_list->err.code = 7;
 			return (-1);
 		}
 		i++;

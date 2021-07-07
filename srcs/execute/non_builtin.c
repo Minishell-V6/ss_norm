@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   non_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:22:05 by sejpark           #+#    #+#             */
 /*   Updated: 2021/07/07 10:55:36 by sejpark          ###   ########.fr       */

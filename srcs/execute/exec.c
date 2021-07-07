@@ -51,7 +51,7 @@ int	exec(t_cmd *cmd_list, char *argv[], char **envp[])
 	{
 		if ((t_exec_data.pid = fork()) < 0)
 		{
-			cmd_list->err_manage.errcode = 1;
+			cmd_list->err.code = 1;
 			print_errstr(cmd_list);
 			return (g_exit_status);
 		}
