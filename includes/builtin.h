@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 21:33:52 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 21:34:17 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 11:02:14 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "structs.h"
 # include "err_print.h"
 
-int	        ft_echo(t_cmd *cmd_list, int fd);
+int			ft_echo(t_cmd *cmd_list, int fd);
 int			ft_pwd(int fd);
 int			ft_exit(t_cmd *cmd_list);
 int			ft_cd(t_cmd *cmd_list);
