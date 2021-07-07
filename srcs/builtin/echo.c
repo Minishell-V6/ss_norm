@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:27:21 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 22:31:00 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 01:13:49 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_echo(t_cmd *cmd_list, int fd)
 		flg = 1;
 		i++;
 	}
-	while (cmd_list->cmdline[i].cmd && cmd_list->cmdline[i].redir_flag == 0)
+	while (cmd_list->cmdline[i].cmd && cmd_list->cmdline[i].rd_flg == 0)
 	{
 		if (cnt != 0)
 			write(fd, " ", 1);

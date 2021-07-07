@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 16:37:25 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:30:57 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 02:06:05 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int			set_cd(t_cmd *cmd_list)
 {
-	if (cmd_list->cmdline[1].cmd == 0 || cmd_list->cmdline[1].redir_flag == 1)
+	char *tmp;
+
+	if (cmd_list->cmdline[1].cmd == 0 || cmd_list->cmdline[1].rd_flg == 1)
 	{
 		chdir(getenv("HOME"));
 		return (1);
@@ -25,10 +27,11 @@ int			set_cd(t_cmd *cmd_list)
 	{
 		if (cmd_list->cmdline[1].cmd[1] == '/')
 		{
-			cmd_list->cmdline[1].cmd = ft_substr(cmd_list->cmdline[1].cmd, 1, \
+			tmp = ft_substr(cmd_list->cmdline[1].cmd, 1, \
 			ft_strlen(cmd_list->cmdline[1].cmd + 1));
-			cmd_list->cmdline[1].cmd = ft_strjoin(getenv("HOME"), \
-			cmd_list->cmdline[1].cmd);
+			free(cmd_list->cmdline[1].cmd);
+			cmd_list->cmdline[1].cmd = ft_strjoin(getenv("HOME"), tmp);
+			free(tmp);
 		}
 		else if (cmd_list->cmdline[1].cmd[1] == 0)
 		{
@@ -36,24 +39,29 @@ int			set_cd(t_cmd *cmd_list)
 			return (1);
 		}
 	}
-	return (1);
+	return (0);
 }
 
 int			ft_cd(t_cmd *cmd_list)
 {
 	int		i;
-	char	*pst_buffer;
+	char	*dir_buffer;
 
 	i = 0;
-	pst_buffer = getcwd(0, 0);
+	dir_buffer = getcwd(0, 0);
 	if (set_cd(cmd_list) == 1)
+	{
+		free(dir_buffer);
 		return (1);
+	}
 	if (chdir(cmd_list->cmdline[1].cmd) == -1)
 	{
-		chdir(pst_buffer);
-		cmd_list->err_manage.errcode = 3;
-		cmd_list->err_manage.errindex = 1;
+		chdir(dir_buffer);
+		cmd_list->err.code = 3;
+		cmd_list->err.idx = 1;
+		free(dir_buffer);
 		return (-1);
 	}
+	free(dir_buffer);
 	return (1);
 }

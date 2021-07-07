@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   non_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:22:05 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 20:35:35 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 11:38:36 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int				non_builtin_exec(t_cmd *cmd_list, char *argv[], char **envp, char *path, 
 
 	i = 1;
 	argv[0] = path;
-	while (cmd_list->cmdline[i].cmd != NULL && cmd_list->cmdline[i].redir_flag == 0)
+	while (cmd_list->cmdline[i].cmd != NULL && cmd_list->cmdline[i].rd_flg == 0)
 	{
 		argv[i] = cmd_list->cmdline[i].cmd;
 		i++;

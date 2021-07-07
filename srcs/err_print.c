@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:33:46 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:33:11 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 01:20:27 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void			err_write(char *err_str, char *err_cmd, char *err_cmd2)
 
 	i = -1;
 	j = -1;
-	if (err_cmdline == 0 || error_str == 0)
+	if (err_cmd == 0 || err_str == 0)
 		return ;
 	while (err_str[++i])
 	{
 		j = -1;
 		if (err_str[i] == '%' && err_str[i + 1] == 's'\
-		&& err_cmdline != 0)
+		&& err_cmd != 0)
 		{
 			while (err_cmd[++j])
 				write(2, &err_cmd[j], 1);

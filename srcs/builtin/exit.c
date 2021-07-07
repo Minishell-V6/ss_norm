@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:56:10 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:31:18 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 01:17:45 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int				check_digit(t_cmd *cmd_list)
 		{
 			if (cmd_list->exit_flag == 1)
 			{
-				cmd_list->err_manage.errcode = 4;
-				cmd_list->err_manage.errindex = 1;
+				cmd_list->err.code = 4;
+				cmd_list->err.idx = 1;
 				print_errstr(cmd_list);
 				exit(-1);
 			}
 			else
 			{
-				cmd_list->err_manage.errcode = 4;
-				cmd_list->err_manage.errindex = 1;
+				cmd_list->err.code = 4;
+				cmd_list->err.idx = 1;
 				return (0);
 			}
 		}
@@ -50,8 +50,8 @@ void			exit_err_chk(t_cmd *cmd_list)
 		result = ft_atoi(cmd_list->cmdline[1].cmd, &err_flag);
 		if (err_flag == 1)
 		{
-			cmd_list->err_manage.errcode = 4;
-			cmd_list->err_manage.errindex = 1;
+			cmd_list->err.code = 4;
+			cmd_list->err.idx = 1;
 			print_errstr(cmd_list);
 			exit(-1);
 		}
@@ -69,7 +69,7 @@ int				ft_exit(t_cmd *cmd_list)
 			return (-1);
 		if (cmd_list->cmdline[2].cmd != NULL)
 		{
-			cmd_list->err_manage.errcode = 2;
+			cmd_list->err.code = 2;
 			return (-1);
 		}
 	}

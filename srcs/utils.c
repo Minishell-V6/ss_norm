@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:01:44 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:30:35 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 01:13:23 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void			free_list(t_cmd *cmd_list)
 		while (tmp->cmdline[i].cmd != NULL)
 			free(tmp->cmdline[i++].cmd);
 		free(tmp->cmdline);
-		free(tmp->err_manage.errtoken);
+		free(tmp->err.token);
 		free(tmp);
 	}
 	i = 0;
 	while (cmd_list->cmdline[i].cmd != NULL)
 		free(cmd_list->cmdline[i++].cmd);
 	free(cmd_list->cmdline);
-	free(cmd_list->err_manage.errtoken);
+	free(cmd_list->err.token);
 	free(cmd_list);
 }

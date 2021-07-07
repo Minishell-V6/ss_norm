@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:36:51 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:32:00 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 02:29:59 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		fd_err_chk(t_cmd *cmd_list, int i, int redir)
 		| O_APPEND, 0744);
 	if (fd <= 0)
 	{
-		cmd_list->err_manage.errcode = 3;
-		cmd_list->err_manage.errindex = i + 1;
+		cmd_list->err.code = 3;
+		cmd_list->err.idx = i + 1;
 		return (-1);
 	}
 	close(fd);
@@ -58,13 +58,13 @@ int		rd_err_chk(t_cmd *cmd_list, int i, int redir, int *last_index)
 {
 	if (cmd_list->cmdline[i + 1].cmd == 0)
 	{
-		cmd_list->err_manage.errcode = 8;
+		cmd_list->err.code = 8;
 		return (-1);
 	}
-	else if (cmd_list->cmdline[i + 1].redir_flag == 1)
+	else if (cmd_list->cmdline[i + 1].rd_flg == 1)
 	{
-		cmd_list->err_manage.errcode = 7;
-		cmd_list->err_manage.errindex = i + 1;
+		cmd_list->err.code = 7;
+		cmd_list->err.idx = i + 1;
 		return (-1);
 	}
 	if (redir <= 2)
@@ -97,7 +97,7 @@ int		redirect_check(t_cmd *cmd_list, int **fds)
 		{
 			if (rd_err_chk(cmd_list, i, redir, last_index) == -1)
 				return (-1);
-			if (fd_err_chk(cmd_list, i, redir) == -1)
+			if (redir != 2 && fd_err_chk(cmd_list, i, redir) == -1)
 				return (-1);
 		}
 		i++;
