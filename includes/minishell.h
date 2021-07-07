@@ -6,14 +6,13 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 19:54:23 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/07 11:02:30 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:40:06 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include <stdlib.h>
-# include <errno.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>

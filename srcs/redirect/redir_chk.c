@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_chk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejpark <sejpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:00:44 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/07 11:19:53 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 15:19:02 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int		redir_err_chk(t_cmd *cmd_list)
 	{
 		if (cmd_list->cmdline[i].rd_flg == -1)
 		{
-			cmd_list->err.token = alloc_unexpected_token(cmd_list->cmdline[i].cmd);
+			cmd_list->err.token = alloc_unexpected_token(cmd_list->\
+			cmdline[i].cmd);
 			cmd_list->err.code = 7;
 			return (-1);
 		}

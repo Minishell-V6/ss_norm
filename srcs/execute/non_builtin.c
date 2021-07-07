@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:22:05 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/07 10:55:36 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:34:46 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		set_argv(t_cmd *cmd_list, t_ae *t_ae_data, char *path, int *i)
 	*i = 1;
 	t_ae_data->argv[0] = path;
 	while (cmd_list->cmdline[*i].cmd != NULL
-				&& cmd_list->cmdline[*i].redir_flag == 0)
+				&& cmd_list->cmdline[*i].rd_flg == 0)
 	{
 		t_ae_data->argv[*i] = cmd_list->cmdline[*i].cmd;
 		(*i)++;
@@ -38,7 +38,7 @@ int			non_builtin_exec(t_cmd *cmd_list, t_ae t_ae_data, char *path,
 		return (-1);
 	if (pid == 0)
 	{
-		if (cmd_list->pipe_flag == 1)
+		if (cmd_list->pipe_flag == 1 && cmd_list->right_flag == 0)
 			dup2(fds[1], 1);
 		if (execve(path, t_ae_data.argv, t_ae_data.envp) == -1)
 			return (-1);
@@ -111,7 +111,7 @@ int			non_builtin(t_cmd *cmd_list, char *argv[], char **envp, int fds[])
 		if (exec_path_non_builtin(&t_non, t_ae_data, cmd_list, fds) == 0)
 			return (0);
 	}
-	if (t_non.flag == 0)
+	if (t_non.flag == 0 && cmd_list->cmdline[0].rd_flg != 1)
 		return (free_buf(t_non.buf, 0));
 	return (free_buf(t_non.buf, 1));
 }

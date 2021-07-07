@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 16:37:25 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/07 02:06:05 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:32:28 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ int			set_cd(t_cmd *cmd_list)
 	{
 		if (cmd_list->cmdline[1].cmd[1] == '/')
 		{
-			tmp = ft_substr(cmd_list->cmdline[1].cmd, 1, \
-			ft_strlen(cmd_list->cmdline[1].cmd + 1));
-			free(cmd_list->cmdline[1].cmd);
-			cmd_list->cmdline[1].cmd = ft_strjoin(getenv("HOME"), tmp);
+			tmp = cmd_list->cmdline[1].cmd;
+			cmd_list->cmdline[1].cmd = ft_strjoin(getenv("HOME"),\
+			&cmd_list->cmdline[1].cmd[1]);
 			free(tmp);
 		}
 		else if (cmd_list->cmdline[1].cmd[1] == 0)

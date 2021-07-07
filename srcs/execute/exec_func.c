@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:54:21 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 22:30:25 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 16:37:28 by seuyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ int		call_function(t_cmd *cmd_list, char **envp[], char *argv[],
 int		exec_function(t_cmd *cmd_list, char *argv[], char **envp[], int fds[])
 {
 	t_fd	t_fd_data;
-	int		right_flag;
 
 	t_fd_data.fds = fds;
+	cmd_list->right_flag = 0;
 	if (redir_err_chk(cmd_list) == -1)
 		return (-1);
-	if ((right_flag = redirect_check(cmd_list, &(t_fd_data.fds))) == -1)
+	if ((cmd_list->right_flag = redirect_check(cmd_list, \
+	&(t_fd_data.fds))) == -1)
 		return (-1);
-	if (cmd_list->pipe_flag == 1 && right_flag == 0)
+	if (cmd_list->pipe_flag == 1 && cmd_list->right_flag == 0)
 		t_fd_data.fd = t_fd_data.fds[1];
 	else
 		t_fd_data.fd = 1;
