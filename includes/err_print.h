@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/06 22:06:59 by seuyu             #+#    #+#             */
-/*   Updated: 2021/07/06 22:07:01 by seuyu            ###   ########.fr       */
+/*   Created: 2021/07/07 11:01:12 by seuyu             #+#    #+#             */
+/*   Updated: 2021/07/07 11:01:41 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "structs.h"
 # include "minishell.h"
 
-void			print_errstr(t_cmd *cmd_list);
+void	print_errstr(t_cmd *cmd_list);
 
 #endif

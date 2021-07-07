@@ -6,7 +6,7 @@
 /*   By: seuyu <seuyu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:17:37 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/06 22:36:58 by seuyu            ###   ########.fr       */
+/*   Updated: 2021/07/07 10:04:51 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,24 @@
 # include "getenv.h"
 # include "utils.h"
 
-extern int g_exit_status;
-int		non_builtin_exec(t_cmd *cmd_list, char *argv[], char **envp,
-						char *path, int fds[]);
-int		non_builtin(t_cmd *cmd_list, char *argv[], char **envp, int fds[]);
+extern int		g_exit_status;
+typedef struct	s_nonbuiltin
+{
+	struct stat	*buf;
+	char		*env_path;
+	char		**paths;
+	char		*tmp;
+	int			i;
+	int			flag;
+}				t_nonbuiltin;
+typedef struct	s_ae
+{
+	char		**argv;
+	char		**envp;
+}				t_ae;
+int				non_builtin_exec(t_cmd *cmd_list, t_ae t_ae_data, char *path,
+									int fds[]);
+int				non_builtin(t_cmd *cmd_list, char *argv[], char **envp,
+									int fds[]);
 
 #endif

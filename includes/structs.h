@@ -6,14 +6,14 @@
 /*   By: sejpark <sejpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 17:39:39 by sejpark           #+#    #+#             */
-/*   Updated: 2021/07/04 12:56:32 by sejpark          ###   ########.fr       */
+/*   Updated: 2021/07/07 11:00:40 by sejpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	s_err
+typedef struct		s_err
 {
 	int				code;
 	int				idx;
@@ -35,6 +35,6 @@ typedef struct	s_cmd
 	char			*(rd_buf[4]);
 	struct s_err	err;
 	struct s_cmd	*next;
-}				t_cmd;
+}					t_cmd;
 
 #endif
